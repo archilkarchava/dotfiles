@@ -1,29 +1,35 @@
 #!/bin/bash
 
+host='keenetic'
 output='/dev/stdout'
 erroutput='/dev/stderr'
 erase='false'
+ifname='OpenVPN0'
 
-while getopts ':qe' opt; do
+function usage() { 
+  printf '%s\n' "Invalid flag, you can use '-h' to specify host, '-e' to remove from unblock list and '-q' to supress output." 1>&2;
+  exit 1;
+}
+
+while getopts ':h:p:qe' opt; do
   case "${opt}" in
-    q ) { 
+    h ) 
+      host="${OPTARG}"
+      ;;
+    p ) 
+      port="${OPTARG}"
+      ;;
+    q )  
       output='/dev/null'
       erroutput='/dev/null'
-    }
       ;;
     e ) erase='true'
       ;;
-    * ) {
-      printf '%s\n' "Invalid flag, you can use '-e' to remove from unblock list and '-q' to supress output."
-      exit 1
-    }
+    * ) usage
+      ;;
   esac
 done
 shift "$((OPTIND -1))"
-
-host='root@192.168.1.1'
-port=2211
-ifname='OpenVPN0'
 
 for arg in "$@"; do
   arg="$(printf '%s' "${arg}" | sed -e 's|^[^/]*//||' -e 's|/.*$||')"
@@ -64,5 +70,7 @@ function join() {
   printf "%s" "${@/#/$d}"
 }
 
-ssh "${host}" -p "${port}" "$(join ' && ' "${commands[@]}")" > "${output}" 2> "${erroutput}" && \
+remote_command="$(join ' && ' "${commands[@]}")"
+
+ssh "${host}" ${port:+"-p ${port}"} "${remote_command}" > "${output}" 2> "${erroutput}" && \
 printf '%s\n' "${ips[@]}" > "${output}"
