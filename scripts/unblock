@@ -7,7 +7,7 @@ erase='false'
 ifname='OpenVPN0'
 
 function usage() { 
-  printf '%s\n' "Invalid flag, you can use '-h' to specify host, '-e' to remove from unblock list and '-q' to supress output." 1>&2;
+  printf '%s\n' "usage: $(basename "$0") [-qe] [-h ssh_host] [-p ssh_port] unblock_host" 1>&2;
   exit 1;
 }
 
