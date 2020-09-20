@@ -1,0 +1,19 @@
+#!/bin/bash
+
+PATH="/bin:/usr/bin:/sbin:${PATH}"
+REGEX="^Cached"
+MEMINFO="/proc/meminfo"
+THRESHOLDKB="700000"
+
+IFS='
+'
+
+readarray -t LINE < <( grep -E "${REGEX}" "${MEMINFO}" )
+
+for i in "${LINE[@]}"; do
+        NUMPRE="$(echo "$i" | tr -s ' ')"
+        NUM="$(echo "${NUMPRE}" | cut -d ' ' -f2)"
+        if [[ "${NUM}" -gt "${THRESHOLDKB}" ]]; then
+                sync && sysctl -w vm.drop_caches=3 > /dev/null 2>&1
+        fi
+done

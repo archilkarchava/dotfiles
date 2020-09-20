@@ -1,0 +1,29 @@
+#!/bin/bash
+
+OUTPUT_DIR="${HOME}/.local/share/bash-completion/completions"
+IFS=$'\n' read -d '' -r -a FISH_COMPLETE_PATHS < <( fish -c "echo \$fish_complete_path" | tr ' ' '\n' )
+
+mkdir -p "${OUTPUT_DIR}"
+
+for p in "${FISH_COMPLETE_PATHS[@]}"; do
+  for f in "${p}"/*; do
+    func_name="$( basename "${f}" '.fish' )"
+    cat > "${OUTPUT_DIR}/${func_name}" <<EOF
+#!/bin/bash
+
+function _${func_name}_bash_complete() {
+  local word="\${COMP_WORDS["\${COMP_CWORD}"]}"
+  local completions
+  if [[ "\${COMP_LINE}" = "${func_name}" ]]; then
+    completions=""
+  else
+    IFS=$'\\n' read -d '' -r -a completions < <( fish -c "complete -C '\${COMP_LINE}' | cut -f1 -d\\\\t | string escape" 2> /dev/null )
+  fi
+
+  IFS=$'\\n' read -d '' -r -a COMPREPLY < <( compgen -W "\${completions[*]}" -- "\${word}" )
+}
+
+complete -F _${func_name}_bash_complete ${func_name}
+EOF
+  done
+done

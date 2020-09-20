@@ -1,0 +1,16 @@
+#!/bin/bash
+
+function pwshify_args() {
+  while : ; do
+    wslpath -w "$1"
+    shift
+    if [[ "$#" -lt 1 ]]; then
+      break
+    fi
+    echo ','
+  done
+}
+
+readarray -t powershell_args < <(pwshify_args "$@")
+
+powershell.exe -NoProfile -Command "Invoke-Item ${powershell_args[*]}"

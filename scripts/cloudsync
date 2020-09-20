@@ -1,0 +1,18 @@
+#!/bin/bash
+
+fswatch --batch-marker -0 -x -r \
+  --event Created \
+  --event Removed \
+  --event Updated \
+  --event Renamed \
+  "$1" | while read -r -d '' event; do
+  if [[ "${event}" = 'NoOp' ]]; then
+    prevtime="${now}"
+    now="$(date +%s)"
+    elapsed="$((now-prevtime))"
+    if [[ "${elapsed}" -gt 2 ]]; then
+      rclone sync --drive-use-trash=false --progress "$1" "$2"
+    fi
+  fi
+done
+

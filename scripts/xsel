@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# xsel simulation in WSL
+# usage:
+#     xsel -o
+#     xsel -i [string]
+# From https://www.reddit.com/r/neovim/comments/fyj7mp/neovim_in_wsl_copy_to_windows_clipboard/fn241ig/
+
+win32yank="/usr/local/bin/win32yank.exe"
+
+for i in "$@"; do
+  case "${i}" in
+    -o|--output|-out|-bo|-ob)
+      $win32yank -o
+      exit 0
+      ;;
+    -i|--input|-in|-bi|-ib)
+      $win32yank -i
+      exit 0
+      ;;
+  esac
+done

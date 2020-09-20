@@ -1,0 +1,68 @@
+#!/bin/bash
+
+output='/dev/stdout'
+erroutput='/dev/stderr'
+erase='false'
+
+while getopts ':qe' opt; do
+  case "${opt}" in
+    q ) { 
+      output='/dev/null'
+      erroutput='/dev/null'
+    }
+      ;;
+    e ) erase='true'
+      ;;
+    * ) {
+      printf '%s\n' "Invalid flag, you can use '-e' to remove from unblock list and '-q' to supress output."
+      exit 1
+    }
+  esac
+done
+shift "$((OPTIND -1))"
+
+host='root@192.168.1.1'
+port=2211
+ifname='OpenVPN0'
+
+for arg in "$@"; do
+  arg="$(printf '%s' "${arg}" | sed -e 's|^[^/]*//||' -e 's|/.*$||')"
+  if [[ "${arg}" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    ips+=( "${arg}" )
+  else
+    domains+=( "${arg}" )
+  fi
+done
+
+readarray -t resolved < <( dig -4 +short "${domains[@]}" | uniq )
+
+if [[ "${#resolved[@]}" -eq 0 ]]; then
+  printf '%s\n' "Couldn't resolve ips." > "${output}"
+  exit 1
+fi
+
+# Filter out ipv6
+for ip in "${resolved[@]}"; do
+  if [[ "${ip}" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    ips+=( "${ip}" )
+  fi
+done
+
+for ip in "${ips[@]}"; do
+  if [[ "${erase}" == 'true' ]]; then
+    commands+=( "ndmq -p 'no ip route ${ip}'" )
+  else
+    commands+=( "ndmq -p 'ip route ${ip} ${ifname}'" )
+  fi
+done
+
+function join() {
+  local d="$1"
+  shift
+  printf '%s' "$1"
+  shift
+  printf "%s" "${@/#/$d}"
+}
+
+ssh "${host}" -p "${port}" "$(join ' && ' "${commands[@]}")" > "${output}" 2> "${erroutput}" && \
+printf '%s\n' "${ips[@]}" > "${output}"
