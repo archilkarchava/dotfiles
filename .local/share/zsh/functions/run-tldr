@@ -1,0 +1,34 @@
+#!/bin/zsh
+
+function run-tldr {
+  setopt sh_word_split
+  if [[ "$#" -eq 0 ]]; then
+    set -- junk ${BUFFER}
+    shift
+  fi
+  # skipping prepended env variables
+  while [[ "$1" =~ '=' ]]; do
+    shift
+  done
+  if [[ "$1" = 'sudo' ]]; then
+    if [[ "$#" -eq 1 ]]; then
+      tldr --pager sudo
+      return
+    fi
+    shift
+  fi
+  # nv is an alias for nvidia prime render offload
+  if [[ "$1" = "prime-run" ]]; then
+    shift
+  fi
+  if [[ "$1" = 'git' ]]; then
+    if [[ "$#" -eq 1 ]]; then
+      tldr --pager git
+    elif [[ ! "$2" =~ '-' ]]; then
+      tldr --pager git "$2"
+    fi
+    return
+  fi
+  tldr --pager "$1"
+}
+

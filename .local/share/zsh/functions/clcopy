@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+function clcopy() { 
+  if [[ "${OSTYPE}" == darwin* ]] && (( ${+commands[pbcopy]} )) && (( ${+commands[pbpaste]} )); then
+    clipboard_manager='pbcopy'
+  elif [ -n "${DISPLAY:-}" ] && (( ${+commands[xclip]} )); then
+    clipboard_manager='xclip -in -selection clipboard'
+  elif [ -n "${DISPLAY:-}" ] && (( ${+commands[xsel]} )); then
+    clipboard_manager='xsel --clipboard --input'
+  elif (( ${+commands[lemonade]} )); then
+    clipboard_manager='lemonade copy'
+  elif (( ${+commands[doitclient]} )); then
+    clipboard_manager='doitclient wclip'
+  elif (( ${+commands[win32yank]} )); then
+    clipboard_manager='win32yank -i'
+  elif [[ $OSTYPE == linux-android* ]] && (( $+commands[termux-clipboard-set] )); then
+    clipboard_manager='termux-clipboard-set'
+  fi
+
+  if [[ "$#" -eq 0 ]]; then
+    set -- junk "${BUFFER}"
+    shift
+  fi
+
+  echo "$1" | tr -d '\n' | eval "${clipboard_manager}"
+}
