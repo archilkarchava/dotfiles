@@ -1,7 +1,7 @@
 # History settings
-export HISTSIZE=10000
-export SAVEHIST=10000
-export HISTFILE=~/.zsh_history
+[[ -z "${HISTFILE}" ]] && HISTFILE=~/.zsh_history
+HISTSIZE=290000
+SAVEHIST="${HISTSIZE}"
 
 fpath=( "${HOME}/.local/share/zsh/functions" "${HOME}/.local/share/zsh/completions" '/usr/share/zsh/vendor-completions' "${fpath[@]}" )
 
