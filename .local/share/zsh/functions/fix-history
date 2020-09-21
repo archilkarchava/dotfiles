@@ -2,14 +2,8 @@
 
 function fix-history() {
   local BADHISTFILE="${HISTFILE}_bad"
-  # move the .zsh_history file into another .zsh_history_bad file
   mv "${HISTFILE}" "${BADHISTFILE}"
-
-  # write all printable strings into a new .zsh_history file
   strings "${BADHISTFILE}" > "${HISTFILE}"
-
-  # reload the history
   fc -R "${HISTFILE}"
-
   rm "${BADHISTFILE}"
 }
