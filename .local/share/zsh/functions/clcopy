@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/hint/zsh
 
 function clcopy() { 
   if [[ "${OSTYPE}" == darwin* ]] && (( ${+commands[pbcopy]} )) && (( ${+commands[pbpaste]} )); then

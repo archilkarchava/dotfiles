@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/hint/zsh
 
-function run-tldr {
+function run-tldr() {
   setopt sh_word_split
   if [[ "$#" -eq 0 ]]; then
     set -- junk ${BUFFER}
