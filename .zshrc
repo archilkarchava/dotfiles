@@ -134,11 +134,12 @@ zinit wait lucid light-mode for \
 setopt HIST_FIND_NO_DUPS
 
 zinit light zsh-users/zsh-history-substring-search
-
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
+
+zinit wait lucid for OMZP::yarn
 
 # Change terminal tab title based on pwd
 autoload -Uz set-win-title
