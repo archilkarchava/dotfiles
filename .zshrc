@@ -55,7 +55,7 @@ alias vi='nvim'
 alias python='python3'
 alias pip='pip3'
 
-alias sudo='sudo -sE'
+alias sudo='sudo -sE '
 
 # Syntax highlighted man pages
 export BAT_THEME='OneHalfDark'
