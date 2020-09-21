@@ -1,7 +1,7 @@
 # History settings
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE=~/.zsh_history
 
 fpath=( "${HOME}/.local/share/zsh/functions" "${HOME}/.local/share/zsh/completions" '/usr/share/zsh/vendor-completions' "${fpath[@]}" )
 
@@ -202,6 +202,8 @@ precmd_functions+=(set-win-title)
 autoload -Uz clcopy
 zle -N clcopy
 bindkey '^X' clcopy
+
+autoload -Uz fix-history
 
 eval "$(starship init zsh)"
 
