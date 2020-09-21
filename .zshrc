@@ -11,21 +11,6 @@ KEYTIMEOUT=1
 # For ctrl-q to work
 unsetopt flow_control
 
-# bindkey -v
-# Change cursor shape for different vi modes.
-# function zle-keymap-select {
-#   if [[ "${KEYMAP}" = 'vicmd' ]] ||
-#      [[ "$1" = 'block' ]]; then
-#     echo -ne '\e[1 q'
-#   elif [[ "${KEYMAP}" == 'main' ]] ||
-#        [[ "${KEYMAP}" == 'viins' ]] ||
-#        [[ "${KEYMAP}" = '' ]] ||
-#        [[ "$1" = 'beam' ]]; then
-#     echo -ne '\e[5 q'
-#   fi
-# }
-# zle -N zle-keymap-select
-
 autoload -U select-word-style
 select-word-style bash
 
@@ -39,6 +24,7 @@ zle -N run-tldr
 
 bindkey '^[h' run-help
 bindkey '^[g' run-tldr
+
 # Redefine home and end to fix these keys not working after running run-tldr via shortcut
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
@@ -46,7 +32,10 @@ bindkey '^[[F' end-of-line
 # For del to work
 bindkey '^[[3~' delete-char
 
+# Manage dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Upgrades everything including wsl
 alias topgrade="powershell.exe -NoProfile -Command 'cd \$env:USERPROFILE; sudo topgrade'"
 
 alias ls='exa --color=always'
@@ -66,10 +55,7 @@ alias vi='nvim'
 alias python='python3'
 alias pip='pip3'
 
-# Using function here so run-help doesn't treat it as an alias
-function sudo() {
-  /usr/bin/sudo --preserve-env=PATH -sE $@
-}
+alias sudo='sudo -sE'
 
 # Syntax highlighted man pages
 export BAT_THEME='OneHalfDark'
@@ -83,34 +69,7 @@ export FZF_CTRL_T_OPTS="--height 70% --preview-window 'right:60%' --preview 'bat
 source '/usr/share/fzf/key-bindings.zsh'
 source '/usr/share/fzf/completion.zsh'
 
-# # vi mode
-# bindkey -v
-# export KEYTIMEOUT=1
-
-# bindkey -v '^?' backward-delete-char
-
-# # Change cursor shape for different vi modes.
-# function zle-keymap-select {
-#   if [[ ${KEYMAP} == vicmd ]] ||
-#      [[ $1 = 'block' ]]; then
-#     echo -ne '\e[1 q'
-#   elif [[ ${KEYMAP} == main ]] ||
-#        [[ ${KEYMAP} == viins ]] ||
-#        [[ ${KEYMAP} = '' ]] ||
-#        [[ $1 = 'beam' ]]; then
-#     echo -ne '\e[5 q'
-#   fi
-# }
-# zle -N zle-keymap-select
-# zle-line-init() {
-#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-#     echo -ne "\e[5 q"
-# }
-# zle -N zle-line-init
-# echo -ne '\e[5 q' # Use beam shape cursor on startup.
-# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
-# Edit line in vim with ctrl-e:
+# Edit line in vim with alt-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^[e' edit-command-line
 
@@ -141,24 +100,11 @@ autoload -Uz _zinit
 
 ### End of Zinit's installer chunk
 
-# Basic auto/tab complete:
-# export ZLE_REMOVE_SUFFIX_CHARS=''
-# autoload -Uz compinit
-# zmodload zsh/complist
-# bindkey '^[[Z' reverse-menu-complete
-# zstyle ':completion:*:*:*:default' menu yes select interactive
-# zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
-# bindkey -M menuselect '/' history-incremental-search-forward
-# Use vim keys in tab complete menu:
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
-# compinit
-# Take advantage of $LS_COLORS for completion as well. 
+# Take advantage of $LS_COLORS for completion
 eval "$(dircolors)"
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-setopt globdots	# Include hidden files.
+# Include hidden files
+setopt globdots	
 
 # (experimental, may change in the future)
 # some boilerplate code to define the variable `extract` which will be used later
@@ -175,8 +121,6 @@ realpath=\${(Qe)~realpath}
 
 # give a preview of directory when completing cd
 zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always $realpath'
-# disable sort when completing options of any command
-# zstyle ':completion:complete:*:options' sort false
 
 zinit wait lucid light-mode for \
   atinit'zicompinit; zicdreplay' \
@@ -196,24 +140,16 @@ bindkey '^[[B' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
+# Change terminal tab title based on pwd
 autoload -Uz set-win-title
 precmd_functions+=(set-win-title)
 
+# Copy current command line buffer via ctrl+x
 autoload -Uz clcopy
 zle -N clcopy
 bindkey '^X' clcopy
 
+# Fix corrupt history file
 autoload -Uz fix-history
 
 eval "$(starship init zsh)"
-
-# zinit light marzocchi/zsh-notify
-
-# zstyle ':notify:*' command-complete-timeout 10
-# zstyle ':notify:*' expire-time 1000
-# zstyle ':notify:*' error-title 'Command failed (in #{time_elapsed})'
-# zstyle ':notify:*' success-title 'Command finished (in #{time_elapsed})'
-# zstyle ':notify:*' error-sound '/usr/share/sounds/gnome/default/alerts/sonar.ogg'
-# zstyle ':notify:*' success-sound '/usr/share/sounds/gnome/default/alerts/drip.ogg'
-# zstyle ':notify:*' app-name sh
-
