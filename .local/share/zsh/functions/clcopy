@@ -17,10 +17,14 @@ function clcopy() {
     clipboard_manager='termux-clipboard-set'
   fi
 
-  if [[ "$#" -eq 0 ]]; then
-    set -- junk "${BUFFER}"
-    shift
+  # Copy from file if argument supplied
+  if [[ "$#" -ne 0 ]]; then
+    eval "${clipboard_manager}" < "$(echo "$1" | tr -d '\n')"
+    return
   fi
+
+  # Copy from command line via widget or stdin 
+  set -- "${BUFFER:-$(</dev/stdin)}"
 
   echo "$1" | tr -d '\n' | eval "${clipboard_manager}"
 }
