@@ -46,7 +46,7 @@ done
 readarray -t resolved < <( dig -4 +short "${domains[@]}" | uniq )
 
 if [[ "${#resolved[@]}" -eq 0 ]]; then
-  printf '%s\n' "Couldn't resolve ips." 1>&2 
+  printf '%s\n' "Couldn't resolve ips." > "${erroutput}" 
   exit 1
 fi
 
