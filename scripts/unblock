@@ -70,7 +70,7 @@ function join() {
   shift
   printf '%s' "$1"
   shift
-  printf "%s" "${@/#/$d}"
+  printf '%s' "${@/#/$d}"
 }
 
 remote_command="$(join ' && ' "${commands[@]}")"
