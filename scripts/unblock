@@ -7,7 +7,7 @@ erase='false'
 ifname='OpenVPN0'
 
 function usage() { 
-  printf '%s\n' "usage: $(basename "$0") [-qe] [-h ssh_host] [-p ssh_port] [-i interface_name] unblock_host" 1>&2;
+  printf '%s\n' "usage: $(basename "$0") [-qe] [-h ssh_host] [-p ssh_port] [-i interface_name] unblock_host" 1>&2
   exit 1;
 }
 
@@ -46,7 +46,7 @@ done
 readarray -t resolved < <( dig -4 +short "${domains[@]}" | uniq )
 
 if [[ "${#resolved[@]}" -eq 0 ]]; then
-  printf '%s\n' "Couldn't resolve ips." > "${output}"
+  printf '%s\n' "Couldn't resolve ips." 1>&2 
   exit 1
 fi
 
