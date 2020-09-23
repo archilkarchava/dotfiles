@@ -126,6 +126,8 @@ realpath=\${(Qe)~realpath}
 # give a preview of directory when completing cd
 zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always $realpath'
 
+zinit wait lucid for wfxr/forgit
+
 zinit wait lucid for OMZP::yarn
 
 zinit wait lucid atload"bindkey '^[[A' history-substring-search-up;
