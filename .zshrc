@@ -135,6 +135,7 @@ zinit wait lucid atload"bindkey '^[[A' history-substring-search-up;
 zinit wait lucid light-mode for \
   atinit'zicompinit; zicdreplay' \
       zdharma/fast-syntax-highlighting \
+  atinit'zicompinit; zicdreplay' \
       Aloxaf/fzf-tab \
   atload'_zsh_autosuggest_start' \
       zsh-users/zsh-autosuggestions \
