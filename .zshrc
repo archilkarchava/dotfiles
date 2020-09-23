@@ -57,6 +57,8 @@ alias pip='pip3'
 
 alias sudo='sudo -sE '
 
+alias systemctl='sudo systemctl'
+
 # Syntax highlighted man pages
 export BAT_THEME='OneHalfDark'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
