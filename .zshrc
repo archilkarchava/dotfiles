@@ -108,6 +108,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # Include hidden files
 setopt globdots	
 
+setopt HIST_FIND_NO_DUPS
+
 # (experimental, may change in the future)
 # some boilerplate code to define the variable `extract` which will be used later
 # please remember to copy them
@@ -124,6 +126,12 @@ realpath=\${(Qe)~realpath}
 # give a preview of directory when completing cd
 zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always $realpath'
 
+zinit wait lucid for OMZP::yarn
+
+zinit wait lucid atload"bindkey '^[[A' history-substring-search-up;
+    bindkey '^[[B' history-substring-search-down" for \
+        zsh-users/zsh-history-substring-search
+
 zinit wait lucid light-mode for \
   atinit'zicompinit; zicdreplay' \
       zdharma/fast-syntax-highlighting \
@@ -132,16 +140,6 @@ zinit wait lucid light-mode for \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions
-
-setopt HIST_FIND_NO_DUPS
-
-zinit light zsh-users/zsh-history-substring-search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-
-zinit wait lucid for OMZP::yarn
 
 # Change terminal tab title based on pwd
 autoload -Uz set-win-title
