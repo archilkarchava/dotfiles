@@ -35,9 +35,6 @@ bindkey '^[[3~' delete-char
 # Manage dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# Upgrades everything including wsl
-alias topgrade="powershell.exe -NoProfile -Command 'cd \$env:USERPROFILE; sudo topgrade'"
-
 alias ls='exa --color=always'
 alias ll='ls -l'
 alias la='ls -a'

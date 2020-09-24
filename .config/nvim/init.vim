@@ -248,13 +248,4 @@ if !exists('g:vscode')
 	autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 	autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 	" == AUTOCMD END ================================
-  " Restore cursor in terminal
-  autocmd VimLeave * set guicursor=a:ver30-blonkoff500-blinkon500
 endif
-" if has("win32")
-"   set shell=C:\Windows\System32\wsl.exe
-"   set shellpipe=|
-"   set shellredir=>
-"   set shellcmdflag=
-" endif 
-
