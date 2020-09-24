@@ -40,10 +40,6 @@ Plug 'tomasiser/vim-code-dark', Cond(!exists('g:vscode'))
 Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vim-easymotion-fork' })
 Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
 Plug 'justinmk/vim-sneak'
-" Keycode for english_US as default input method
-let g:im_select_default = 1033
-Plug 'archilkarchava/vim-im-select'
-" autocmd InsertLeave * silent execute ':!im-select 1033'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'tpope/vim-surround'
 let g:camelcasemotion_key = '<leader>'
@@ -100,7 +96,6 @@ set smartindent
 set encoding=utf-8
 set pastetoggle=<F2>
 set clipboard=unnamedplus
-autocmd VimEnter * ImSelectEnable
 noremap x "_x
 noremap X "_X
 noremap <Del> "_x
