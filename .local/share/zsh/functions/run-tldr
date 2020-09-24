@@ -17,7 +17,7 @@ function run-tldr() {
     fi
     shift
   fi
-  # nv is an alias for nvidia prime render offload
+  # prime-run is script for nvidia prime render offload
   if [[ "$1" = "prime-run" ]]; then
     shift
   fi
