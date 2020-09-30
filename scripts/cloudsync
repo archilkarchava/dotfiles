@@ -11,7 +11,7 @@ fswatch --batch-marker -0 -x -r \
     now="$(date +%s)"
     elapsed="$((now-prevtime))"
     if [[ "${elapsed}" -gt 2 ]]; then
-      rclone sync --drive-use-trash=false --progress "$1" "$2"
+      rclone sync --progress "$1" "$2"
     fi
   fi
 done
