@@ -16,9 +16,9 @@ select-word-style bash
 
 zstyle ':zle:transpose-words' word-style space
 
-autoload -Uz run-help
-autoload -Uz run-help-sudo run-help-git
-autoload -Uz run-tldr
+autoload -U run-help
+autoload run-help-sudo run-help-git
+autoload -U run-tldr
 
 zle -N run-tldr
 
@@ -148,6 +148,6 @@ zle -N clcopy
 bindkey '^X' clcopy
 
 # Fix corrupt history file
-autoload -Uz fix-history
+autoload -U fix-history
 
 eval "$(starship init zsh)"
