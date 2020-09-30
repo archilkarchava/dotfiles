@@ -56,14 +56,11 @@ alias sudo='sudo -sE '
 
 alias systemctl='sudo systemctl'
 
-# Syntax highlighted man pages
-export BAT_THEME='OneHalfDark'
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+alias nv='prime-run'
 
-export FZF_DEFAULT_COMMAND='fd --exclude ".git" --hidden --follow -t f'
-export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-export FZF_ALT_C_COMMAND="fd --no-ignore --exclude '.git' --exclude '.cache' --exclude '.rustup' --exclude '.cargo' --exclude 'coc' --hidden --follow -t d . "${HOME}""
-export FZF_CTRL_T_OPTS="--height 70% --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+alias spotify="${HOME}/scripts/gtk-enforce-theme-variant -qt dark 'LD_PRELOAD=/usr/lib/spotify-adblock.so spotify'"
+
+alias lzd='lazydocker'
 
 source '/usr/share/fzf/key-bindings.zsh'
 source '/usr/share/fzf/completion.zsh'
