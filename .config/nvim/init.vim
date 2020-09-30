@@ -81,6 +81,7 @@ nnoremap <SPACE> <Nop>
 filetype plugin indent on
 filetype plugin on
 syntax on
+set title
 set tabstop=2
 set expandtab
 set softtabstop=0
