@@ -120,18 +120,32 @@ realpath=\${(Qe)~realpath}
 # give a preview of directory when completing cd
 zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always $realpath'
 
-zinit wait lucid for wfxr/forgit
+zinit wait lucid if'[[ "$DISPLAY" != "" ]]' has'xdotool' has'wmctrl' atload"
+  zstyle ':notify:*' command-complete-timeout 20;
+  zstyle ':notify:*' expire-time 1000;
+  zstyle ':notify:*' error-title 'Command failed (in #{time_elapsed})';
+  zstyle ':notify:*' success-title 'Command finished (in #{time_elapsed})';
+  zstyle ':notify:*' app-name sh;
+  zstyle ':notify:*' enable-on-ssh no;
+" for marzocchi/zsh-notify
 
-zinit wait lucid for OMZP::yarn
+zinit wait lucid has'git' for wfxr/forgit
 
-zinit wait lucid atload"bindkey '^[[A' history-substring-search-up;
-    bindkey '^[[B' history-substring-search-down" for \
-        zsh-users/zsh-history-substring-search
+zinit wait lucid for OMZP::command-not-found
+zinit wait lucid has'systemctl' for OMZP::systemd
+zinit wait lucid has'yarn' for OMZP::yarn
+
+zinit wait lucid atload"
+  bindkey '^[[A' history-substring-search-up;
+  bindkey '^[[B' history-substring-search-down;
+  bindkey -M emacs '^P' history-substring-search-up;
+  bindkey -M emacs '^N' history-substring-search-down;
+" for zsh-users/zsh-history-substring-search
 
 zinit wait lucid light-mode for \
   atinit'zicompinit; zicdreplay' \
       zdharma/fast-syntax-highlighting \
-  atinit'zicompinit; zicdreplay' \
+  has'fzf' \
       Aloxaf/fzf-tab \
   atload'_zsh_autosuggest_start' \
       zsh-users/zsh-autosuggestions \
