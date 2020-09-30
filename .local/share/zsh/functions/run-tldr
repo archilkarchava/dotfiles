@@ -1,4 +1,4 @@
-#!/hint/zsh
+#!/bin/zsh
 
 function run-tldr() {
   setopt sh_word_split

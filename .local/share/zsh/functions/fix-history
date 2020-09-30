@@ -1,4 +1,4 @@
-#!/hint/zsh
+#!/bin/zsh
 
 function fix-history() {
   local BADHISTFILE="${HISTFILE}_bad"
