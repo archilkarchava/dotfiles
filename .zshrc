@@ -35,7 +35,7 @@ bindkey '^[[3~' delete-char
 # Manage dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias ls='exa --color=always'
+alias ls='exa --color=always --icons'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
