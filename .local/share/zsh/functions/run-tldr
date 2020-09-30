@@ -18,7 +18,7 @@ function run-tldr() {
     shift
   fi
   # prime-run is script for nvidia prime render offload
-  if [[ "$1" = "prime-run" ]]; then
+  if [[ "$1" = 'prime-run' || "$1" = 'nv' ]]; then
     shift
   fi
   if [[ "$1" = 'git' ]]; then
