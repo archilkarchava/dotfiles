@@ -1,0 +1,40 @@
+{
+  "float": [
+    {
+      "class": "pop-shell-example",
+      "title": "pop-shell-example"
+    },
+    {
+      "class": "Pop!_Shell Keyboard Shortcuts"
+    },
+    {
+      "class": "copyq"
+    },
+    {
+      "class": "Gnome-extensions-app"
+    },
+    {
+      "class": "Gnome-control-center"
+    },
+    {
+      "class": "Gnome-tweaks"
+    },
+    {
+      "class": "Gnome-layout-switcher"
+    },
+    {
+      "class": "Nvidia-settings"
+    },
+    {
+      "class": "qt5ct"
+    },
+    {
+      "class": "Dconf-editor"
+    },
+    {
+      "class": "mpv"
+    }
+
+  ],
+  "log_on_focus": false
+}
