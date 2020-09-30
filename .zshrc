@@ -26,8 +26,8 @@ bindkey '^[h' run-help
 bindkey '^[g' run-tldr
 
 # Redefine home and end to fix these keys not working after running run-tldr via shortcut
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
+bindkey '^[[1~' beginning-of-line
+bindkey '^[[4~' end-of-line
 
 # For del to work
 bindkey '^[[3~' delete-char
