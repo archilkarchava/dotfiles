@@ -54,6 +54,7 @@ alias pip='pip3'
 
 alias sudo='sudo -sE '
 
+alias open='xdg-open'
 
 alias nv='prime-run'
 
