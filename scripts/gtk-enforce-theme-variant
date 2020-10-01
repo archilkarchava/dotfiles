@@ -1,0 +1,85 @@
+#!/bin/bash
+
+output='/dev/stdout'
+erroutput='/dev/stderr'
+is_daemon='false'
+theme_variant='dark'
+
+function usage() { 
+  printf '%s\n' "usage: $(basename "$0") [-qd] [-t [dark|light]] app" 1>&2
+  exit 1;
+}
+
+while getopts ':qdt:' opt; do
+  case "${opt}" in
+    q )
+      output='/dev/null'
+      erroutput='/dev/null'
+      ;;
+    d )
+      is_daemon='true'
+      ;;
+    t ) 
+      if [[ "${OPTARG}" != 'dark' ]] && [[ "${OPTARG}" != 'light' ]]; then
+          printf '%s\n' 'Theme variant can be either dark or light' > "${erroutput}"
+          exit 1
+      fi
+      theme_variant="${OPTARG}"
+      ;;
+    * ) usage
+      ;;
+  esac
+done
+
+shift "$((OPTIND -1))"
+
+if [ "$#" -eq 0 ]; then
+    xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT "${theme_variant}"
+    exit "$?"
+fi
+
+if ! command -v wmctrl &> /dev/null; then
+    printf '%s\n' "wmctrl should be in path" > "${erroutput}"
+    exit 1
+fi
+
+GTK_THEME="$(gsettings get org.gnome.desktop.interface gtk-theme)"
+eval GTK_THEME="${GTK_THEME%%:*}:${theme_variant}"
+export GTK_THEME_VARIANT="${theme_variant}"
+
+if [[ -f "$1" ]]; then
+  exec "$1" & PID="$!"
+else
+  eval "$1" & PID="$!"
+fi
+
+if [[ "${is_daemon}" == 'false' ]]; then
+  printf '%s\n' "Starting ${theme_variant} theme variant enforcing for $1 (PID=${PID})." > "${output}"
+  i=0
+  max_tries=50
+else
+  printf '%s\n' "Starting ${theme_variant} theme variant enforcing daemon for $1 (PID=${PID})." > "${output}"
+fi
+
+while :; do
+  if [[ "${is_daemon}" == 'false' ]]; then
+    i="$(( i+1 ))"
+    if [[ "${i}" -gt "${max_tries}" ]]; then
+        printf '%s' "Couldn't enforce ${theme_variant} theme variant." > "${erroutput}"
+        exit 1
+    fi
+  else
+    if ! kill -0 "${PID}" 2>/dev/null; then
+      printf '%s\n' "Finished ${theme_variant} theme variant enforcing daemon for $1 (PID=${PID})." > "${output}"
+      exit 0
+    fi
+  fi
+  sleep 0.1
+  REGEX="$(echo "${PID}" | cat - <(command ps -o pid:1 --no-headers --ppid "${PID}") | paste -sd '|' -)"
+  for xprop_id in $(wmctrl -lp | grep -E -io "^(0x[a-f0-9]+)\s+[0-9]+\s+($REGEX)\s" | cut -d' ' -f1); do
+    if xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT "${theme_variant}" -id "${xprop_id}" 2> /dev/null && [[ "${is_daemon}" == 'false' ]]; then
+      printf '%s\n' "Successfully enforced ${theme_variant} theme variant for $1 (PID=${PID})." > "${output}"
+      exit 0
+    fi
+  done
+done
