@@ -39,6 +39,10 @@ Plug 'tomasiser/vim-code-dark', Cond(!exists('g:vscode'))
 " map T <Plug>Sneak_T
 Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vim-easymotion-fork' })
 Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchSkipGhKeys = ['gh', 'gH']
+let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
+Plug 'lyokha/vim-xkbswitch'
 Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'tpope/vim-surround'
