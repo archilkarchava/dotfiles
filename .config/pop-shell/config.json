@@ -23,6 +23,9 @@
       "class": "Gnome-layout-switcher"
     },
     {
+      "class": "Org.gnome.Weather"
+    },
+    {
       "class": "Nvidia-settings"
     },
     {
