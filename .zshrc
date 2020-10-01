@@ -54,7 +54,6 @@ alias pip='pip3'
 
 alias sudo='sudo -sE '
 
-alias systemctl='sudo systemctl'
 
 alias nv='prime-run'
 
