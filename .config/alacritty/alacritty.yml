@@ -71,12 +71,19 @@ shell:
 
 
 mouse_bindings:
-  - { mouse: Middle,                action: Paste                        }
+  - { mouse: Middle,                          action: Paste                                                   }
 key_bindings:
-  - { key: N,        mods: Control, action: SpawnNewInstance             }
-  - { key: V,        mods: Control, action: Paste                        }
-  - { key: Return,   mods: Control, action: ToggleFullscreen             }
-  - { key: F11,                     action: ToggleFullscreen             }
-  - { key: Insert,   mods: Shift,   action: PasteSelection               }
-  - { key: Add,      mods: Control, action: IncreaseFontSize             }
-  - { key: Subtract, mods: Control, action: DecreaseFontSize             }
+  - { key: N,         mods: Control,          action: SpawnNewInstance                                        }
+  - { key: V,         mods: Control,          action: Paste                                                   }
+  - { key: Return,    mods: Control,          action: ToggleFullscreen                                        }
+  - { key: F11,                               action: ToggleFullscreen                                        }
+  - { key: Insert,    mods: Shift,            action: PasteSelection                                          }
+  - { key: Add,       mods: Control,          action: IncreaseFontSize                                        }
+  - { key: Subtract,  mods: Control,          action: DecreaseFontSize                                        }
+  - { key: Tab,       mods: Control|Shift,    chars: "\x60\x70"                                               }
+  - { key: Tab,       mods: Control,          chars: "\x60\x6e"                                               }
+  - { key: T,         mods: Control|Shift,    chars: "\x60\x63"                                               }
+  - { key: W,         mods: Control|Shift,    command: { program: "tmux", args: ["kill-pane"]         }       }
+  - { key: R,         mods: Control|Alt,      chars: "\x60\x76"                                               }
+  - { key: D,         mods: Control|Alt,      chars: "\x60\x68"                                               }
+  - { key: F,         mods: Control|Shift,    chars: "\x60\x5b\x3f"                                           }
