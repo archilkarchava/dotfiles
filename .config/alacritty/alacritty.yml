@@ -4,7 +4,6 @@ window:
     instance: Alacritty
     general: Alacritty
   dynamic_title: true
-  # startup_mode: Maximized
 
 # VSCode's integrated terminal default colors
 # Primary and dimmed colors needed
@@ -64,12 +63,6 @@ scrolling:
 
 shell:
   program: tmux
-  # program: /bin/bash
-  # args:
-  #   - -l
-  #   - -c
-  #   - "tmux attach || tmux"
-
 
 mouse_bindings:
   - { mouse: Middle,                          action: Paste                                                   }
