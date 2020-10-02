@@ -1,0 +1,36 @@
+#!/bin/bash
+
+declare -r esc=$'\033'
+declare -r c_reset="${esc}[0m"
+declare -r c_red="${esc}[31m"
+
+usage() {
+  LESS=-FEXR less <<HELP
+lists and installs packages from arch repos and aur using yay
+HELP
+}
+
+err() {
+  printf "${c_red}%s${c_reset}\n" "$*" >&2
+}
+
+while true; do
+  case "$1" in
+    -h|--help) usage; exit ;;
+    *) break
+  esac
+done
+
+if ! command -v fzf &> /dev/null || ! command -v yay &> /dev/null; then
+  err 'fzf and yay should be in path'
+  exit 1
+fi
+
+fzf() {
+  command fzf -e +s --multi --cycle --ansi \
+    --bind='Ctrl-X:toggle-preview' \
+    --no-hscroll --inline-info \
+    --header='tab to select multiple packages, Ctrl-X for more info on a package' "$@"
+}
+
+yay -Pc | cut -f1 | fzf --preview="yay -Si {1}" | xargs -ro yay -S

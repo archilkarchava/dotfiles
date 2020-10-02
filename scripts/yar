@@ -1,0 +1,37 @@
+#!/bin/bash
+
+declare -r esc=$'\033'
+declare -r c_reset="${esc}[0m"
+declare -r c_red="${esc}[31m"
+
+usage() {
+  LESS=-FEXR less <<HELP
+  lists and removes arch packages
+HELP
+}
+
+err() {
+  printf "${c_red}%s${c_reset}\n" "$*" >&2
+}
+
+while true; do
+  case "$1" in
+    -h|--help) usage; exit ;;
+    *) break
+  esac
+done
+
+if ! command -v fzf &> /dev/null; then
+  err 'fzf should be in path'
+  exit 1
+fi
+
+fzf() {
+  command fzf -e +s --multi --cycle --ansi \
+    --bind='Ctrl-X:toggle-preview' \
+    --no-hscroll --inline-info \
+    --header='tab to select multiple packages, Ctrl-X for more info on a package' "$@"
+}
+
+pacman -Qq | cut -f1 | fzf --preview="pacman -Qi {1}" | xargs -ro sudo pacman -Rns
+
