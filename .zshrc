@@ -25,7 +25,10 @@ zle -N run-tldr
 bindkey '^[h' run-help
 bindkey '^[g' run-tldr
 
-# Redefine home and end to fix these keys not working after running run-tldr via shortcut
+# Make home and end keys always work outside tmux
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+# Make home and end keys always work inside tmux
 bindkey '^[[1~' beginning-of-line
 bindkey '^[[4~' end-of-line
 
