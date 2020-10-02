@@ -80,4 +80,10 @@ key_bindings:
   - { key: W,         mods: Control|Shift,    command: { program: "tmux", args: ["kill-pane"]         }       }
   - { key: R,         mods: Control|Alt,      chars: "\x60\x76"                                               }
   - { key: D,         mods: Control|Alt,      chars: "\x60\x68"                                               }
-  - { key: F,         mods: Control|Shift,    chars: "\x1b\x73"                                           }
+  - { key: F,         mods: Control|Shift,    chars: "\x1b\x73"                                               }
+
+  # Resize tmux panes with Alt+Shift+hjkl
+  - { key: H,         mods: Alt|Shift,        chars: "\x1b\x5b\x31\x3b\x34\x44"                               }
+  - { key: J,         mods: Alt|Shift,        chars: "\x1b\x5b\x31\x3b\x34\x42"                               }
+  - { key: K,         mods: Alt|Shift,        chars: "\x1b\x5b\x31\x3b\x34\x41"                               }
+  - { key: L,         mods: Alt|Shift,        chars: "\x1b\x5b\x31\x3b\x34\x43"                               }
