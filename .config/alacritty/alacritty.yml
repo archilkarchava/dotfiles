@@ -87,3 +87,4 @@ key_bindings:
   - { key: W,         mods: Control|Shift,    command: { program: "tmux", args: ["kill-pane"]         }       }
   - { key: R,         mods: Control|Alt,      chars: "\x60\x76"                                               }
   - { key: D,         mods: Control|Alt,      chars: "\x60\x68"                                               }
+  - { key: F,         mods: Control|Shift,    chars: "\x1b\x73"                                           }
