@@ -13,6 +13,7 @@ _fzf_complete_yay() {
     --bind='Ctrl-X:toggle-preview' \
     --no-hscroll --inline-info \
     --header='Ctrl-X to hide package info' \
+    --preview-window='right:wrap' \
     --preview="${preview}" -- "$@" < <(eval "${get_matches}")
 }
 
