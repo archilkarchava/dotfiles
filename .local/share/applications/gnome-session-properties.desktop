@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Startup Applications
+Icon=gnome-session-properties
+Terminal=false
+Exec=gnome-session-properties
+StartupWMClass=gnome-session-properties
+Categories=GNOME;GTK;Utility;
