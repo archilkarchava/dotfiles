@@ -144,6 +144,8 @@ zinit wait lucid if'[[ "$DISPLAY" != "" ]]' has'xdotool' has'wmctrl' atload"
 
 zinit wait lucid has'git' for wfxr/forgit
 
+zinit wait lucid for OMZ::lib/history.zsh
+
 zinit wait lucid for OMZP::command-not-found
 zinit wait lucid has'systemctl' for OMZP::systemd
 zinit wait lucid has'yarn' for OMZP::yarn
