@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Calibre Sync
+Type=Application
+Exec=/home/archil/scripts/cloudsync /home/archil/Calibre gdrive:Calibre
+Hidden=false
+X-GNOME-Autostart-enabled=true
+
+Comment[en_US]=Syncs local Calibre library to Google Drive using rclone and fswatch
+Comment=Syncs local Calibre library to Google Drive using rclone and fswatch

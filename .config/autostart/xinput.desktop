@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/xinput set-prop 14 'libinput Scroll Method Enabled' 0, 0, 1
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Middle Click Scroll
+Name=Middle Click Scroll
+Comment[en_US]=
+Comment=
