@@ -70,6 +70,14 @@ alias lzd='lazydocker'
 source '/usr/share/fzf/key-bindings.zsh'
 source '/usr/share/fzf/completion.zsh'
 
+fzf-direct-completion() {
+  FZF_COMPLETION_TRIGGER= fzf-completion
+}
+zle -N fzf-direct-completion
+bindkey '^[[Z' fzf-direct-completion
+
+source "${HOME}/.local/share/zsh/completions/fzf/_yay"
+
 # Edit line in vim with alt-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^[e' edit-command-line
