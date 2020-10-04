@@ -81,6 +81,10 @@ key_bindings:
   - { key: R,         mods: Control|Alt,      chars: "\x60\x76"                                               }
   - { key: D,         mods: Control|Alt,      chars: "\x60\x68"                                               }
   - { key: F,         mods: Control|Shift,    chars: "\x1b\x73"                                               }
+  # Swap tmux panes with Ctrl+Shift+hl
+  - { key: H,         mods: Control|Shift,        chars: "\x1b\x5b\x31\x3b\x36\x44"                               }
+  - { key: L,         mods: Control|Shift,        chars: "\x1b\x5b\x31\x3b\x36\x44"                               }
+
 
   # Resize tmux panes with Alt+Shift+hjkl
   - { key: H,         mods: Alt|Shift,        chars: "\x1b\x5b\x31\x3b\x34\x44"                               }
