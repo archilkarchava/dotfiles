@@ -11,10 +11,12 @@ KEYTIMEOUT=1
 # For ctrl-q to work
 unsetopt flow_control
 
-autoload -U select-word-style
-select-word-style bash
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-zstyle ':zle:transpose-words' word-style space
+autoload -U select-word-style
+select-word-style normal
+
+zstyle ':zle:transpose-words' word-style whitespace
 
 autoload -U run-help
 autoload run-help-sudo run-help-git
@@ -112,6 +114,8 @@ autoload -Uz _zinit
 # Take advantage of $LS_COLORS for completion
 eval "$(dircolors)"
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# Setting the insert-tab tag to false will prevent a tab from being inserted when there are no characters to the left of the cursor.
+zstyle ':completion:*' insert-tab false
 # Include hidden files
 setopt globdots	
 
