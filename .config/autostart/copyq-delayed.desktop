@@ -177,6 +177,7 @@ Comment[x-test]=xxA cut & paste history utilityxx
 Comment[zh_CN]=管理剪切和粘贴历史的工具
 Comment[zh_TW]=剪貼紀錄公用程式
 
-Exec=sh -c "sleep 4; killall copyq; /usr/bin/copyq"
+Exec=sh -c "sleep 4; killall copyq; $HOME/scripts/copyq_restart_and_switch_theme"
 Hidden=False
 X-GNOME-Autostart-enabled=true
+Name[en_US]=CopyQ Delayed and theme aware
