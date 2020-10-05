@@ -4,7 +4,7 @@ _fzf_complete_yay() {
   local lbuf preview get_matches
   lbuf="$1"
   preview='yay -Si {1}'
-  get_matches='yay -Pc | cut -f1'
+  get_matches='yay -Slq'
   if [[ "${lbuf}" == *-R* ]] || [[ "${lbuf}" == *--remove* ]]; then
     preview='yay -Qi {1}'
     get_matches='yay -Qq'
