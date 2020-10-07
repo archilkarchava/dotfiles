@@ -1,4 +1,5 @@
 PATH="${HOME}/scripts:${PATH}"
+PATH="${PATH}:${HOME}/.local/bin"
 PATH="${PATH}:${HOME}/.cargo/bin"
 export GOPATH="${HOME}/go"; PATH="${GOPATH}/bin:${PATH}";
 export N_PREFIX="${HOME}/n"; PATH="${N_PREFIX}/bin:${PATH}"
