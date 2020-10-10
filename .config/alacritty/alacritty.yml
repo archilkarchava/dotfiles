@@ -37,22 +37,10 @@ colors:
 
 font:
   normal:
-    family: JetBrainsMono Nerd Font
-    style: Regular
+    family: CaskaydiaCove Nerd Font
+    style: Book
 
-  bold:
-    family: JetBrainsMono Nerd Font
-    style: Bold
-
-  italic:
-    family: JetBrainsMono Nerd Font
-    style: Italic
-
-  bold_italic:
-    family: JetBrainsMono Nerd Font
-    style: Bold Italic
-
-  size: 12.5
+  size: 12
 
 selection:
   save_to_clipboard: true
