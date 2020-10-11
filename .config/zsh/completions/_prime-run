@@ -1,0 +1,5 @@
+#compdef prime-run
+
+function _prime-run() {
+  _precommand
+}
