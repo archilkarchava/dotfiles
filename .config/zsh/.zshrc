@@ -1,9 +1,9 @@
 # History settings
-[[ -z "${HISTFILE}" ]] && HISTFILE=~/.zsh_history
+[[ -z "${HISTFILE}" ]] && HISTFILE="${ZDOTDIR}/.zsh_history"
 HISTSIZE=290000
 SAVEHIST="${HISTSIZE}"
 
-fpath=( "${HOME}/.local/share/zsh/functions" "${HOME}/.local/share/zsh/completions" '/usr/share/zsh/vendor-completions' "${fpath[@]}" )
+fpath=( "${ZDOTDIR}/functions" "${ZDOTDIR}/completions" '/usr/share/zsh/vendor-completions' "${fpath[@]}" )
 
 bindkey -e
 KEYTIMEOUT=1
@@ -37,38 +37,6 @@ bindkey '^[[4~' end-of-line
 # For del to work
 bindkey '^[[3~' delete-char
 
-# Manage dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-alias ls='exa --color=always --icons'
-alias ll='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
-alias tree='ls --tree'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-alias vim='nvim'
-alias vi='nvim'
-
-alias python='python3'
-alias pip='pip3'
-
-alias sudo='sudo -sE '
-
-alias open='xdg-open'
-
-alias trash='gio trash'
-
-alias nv='prime-run'
-
-alias spotify="${HOME}/scripts/gtk-enforce-theme-variant -qt dark 'LD_PRELOAD=/usr/lib/spotify-adblock.so spotify'"
-
-alias lzd='lazydocker'
-
 source '/usr/share/fzf/key-bindings.zsh'
 source '/usr/share/fzf/completion.zsh'
 
@@ -78,7 +46,9 @@ fzf-direct-completion() {
 zle -N fzf-direct-completion
 bindkey '^[[Z' fzf-direct-completion
 
-source "${HOME}/.local/share/zsh/completions/fzf/_yay"
+for fzf_direct_completion in "${ZDOTDIR}/completions/fzf"/*; do
+  source "${fzf_direct_completion}"
+done
 
 # Edit line in vim with alt-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -88,28 +58,18 @@ bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 bindkey '^U' backward-kill-line
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+# Install zinit if not installed already
+if [[ ! -f ${ZDOTDIR}/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command mkdir -p "${ZDOTDIR}/.zinit" && command chmod g-rwX "${ZDOTDIR}/.zinit"
+    command git clone https://github.com/zdharma/zinit "${ZDOTDIR}/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-source "${HOME}/.zinit/bin/zinit.zsh"
+source "${ZDOTDIR}/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-# zinit light-mode for \
-#     zinit-zsh/z-a-rust \
-#     zinit-zsh/z-a-as-monitor \
-#     zinit-zsh/z-a-patch-dl \
-#     zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
 
 # Take advantage of $LS_COLORS for completion
 eval "$(dircolors)"
@@ -182,5 +142,7 @@ bindkey '^X' clcopy
 
 # Fix corrupt history file
 autoload -U fix-history
+
+source "${ZDOTDIR}/aliases.zsh"
 
 eval "$(starship init zsh)"
