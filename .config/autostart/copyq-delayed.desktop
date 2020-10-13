@@ -180,4 +180,4 @@ Comment[zh_TW]=剪貼紀錄公用程式
 Exec=sh -c "sleep 4; killall copyq; $HOME/scripts/copyq_restart_and_switch_theme"
 Hidden=False
 X-GNOME-Autostart-enabled=true
-Name[en_US]=CopyQ Delayed and theme aware
+Name[en_US]=Delayed and theme-aware CopyQ
