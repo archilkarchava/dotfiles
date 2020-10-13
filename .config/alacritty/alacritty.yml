@@ -37,7 +37,7 @@ colors:
 
 font:
   normal:
-    family: CaskaydiaCove Nerd Font
+    family: Cascadia Code
     style: Book
 
   size: 12
