@@ -1,5 +1,7 @@
-local was_ontop = mp.get_property_native("ontop")
-local was_on_all_workspaces = mp.get_property_native("on-all-workspaces")
+local was_fullscreen = mp.get_property_native("fullscreen")
+local was_paused = mp.get_property_native("pause")
+local was_ontop = not was_fullscreen and not was_paused and mp.get_property_native("ontop")
+local was_on_all_workspaces = not was_fullscreen and mp.get_property_native("on-all-workspaces")
 
 function on_fullscreen_change(name, value)
     local pause = mp.get_property_native("pause")
