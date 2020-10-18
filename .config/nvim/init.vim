@@ -93,8 +93,7 @@ set shiftwidth=0
 
 autocmd Filetype fish setlocal tabstop=4 softtabstop=0 shiftwidth=0 expandtab textwidth=79
 autocmd Filetype fish compiler fish
-" autocmd Filetype fish setlocal foldmethod=expr
-" autocmd Filetype python setlocal tabstop=4
+autocmd Filetype lua setlocal tabstop=4 softtabstop=0 shiftwidth=0 expandtab textwidth=79
 
 set autoindent
 set smartindent
