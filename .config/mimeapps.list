@@ -37,6 +37,7 @@ image/svg+xml=org.gnome.eog.desktop
 image/svg+xml-compressed=org.gnome.eog.desktop
 image/vnd.wap.wbmp=org.gnome.eog.desktop
 image/x-icns=org.gnome.eog.desktop
+application/pdf=org.gnome.Evince.desktop
 
 [Added Associations]
 audio/vorbis=rhythmbox.desktop;
@@ -118,3 +119,7 @@ video/x-flic=mpv-nvidia.desktop;mpv.desktop;
 video/mkv=mpv-nvidia.desktop;mpv.desktop;
 video/x-ogm=mpv-nvidia.desktop;mpv.desktop;
 video/x-matroska=mpv-nvidia.desktop;mpv.desktop
+application/pdf=wps-office-pdf.desktop;org.gnome.Evince.desktop;
+x-scheme-handler/sms=org.gnome.Shell.Extensions.GSConnect.desktop;
+x-scheme-handler/tel=org.gnome.Shell.Extensions.GSConnect.desktop;
+application/x-desktop=dex.desktop;
