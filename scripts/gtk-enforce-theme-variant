@@ -21,8 +21,8 @@ while getopts ':qdt:' opt; do
       ;;
     t ) 
       if [[ "${OPTARG}" != 'dark' ]] && [[ "${OPTARG}" != 'light' ]]; then
-          printf '%s\n' 'Theme variant can be either dark or light' > "${erroutput}"
-          exit 1
+        printf '%s\n' 'Theme variant can be either dark or light' > "${erroutput}"
+        exit 1
       fi
       theme_variant="${OPTARG}"
       ;;
@@ -34,13 +34,13 @@ done
 shift "$((OPTIND -1))"
 
 if [ "$#" -eq 0 ]; then
-    xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT "${theme_variant}"
-    exit "$?"
+  xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT "${theme_variant}"
+  exit "$?"
 fi
 
 if ! command -v wmctrl &> /dev/null; then
-    printf '%s\n' "wmctrl should be in path" > "${erroutput}"
-    exit 1
+  printf '%s\n' "wmctrl should be in path" > "${erroutput}"
+  exit 1
 fi
 
 GTK_THEME="$(gsettings get org.gnome.desktop.interface gtk-theme)"
@@ -65,8 +65,8 @@ while :; do
   if [[ "${is_daemon}" == 'false' ]]; then
     i="$(( i+1 ))"
     if [[ "${i}" -gt "${max_tries}" ]]; then
-        printf '%s' "Couldn't enforce ${theme_variant} theme variant." > "${erroutput}"
-        exit 1
+      printf '%s' "Couldn't enforce ${theme_variant} theme variant." > "${erroutput}"
+      exit 1
     fi
   else
     if ! kill -0 "${PID}" 2>/dev/null; then
