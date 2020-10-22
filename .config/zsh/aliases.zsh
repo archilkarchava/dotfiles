@@ -27,7 +27,7 @@ alias trash='gio trash'
 
 alias nv='prime-run'
 
-alias spotify="${HOME}/scripts/gtk-enforce-theme-variant -qt dark 'LD_PRELOAD=/usr/lib/spotify-adblock.so spotify'"
+alias spotify='gtk-launch spotify'
 
 alias lzd='lazydocker'
 
