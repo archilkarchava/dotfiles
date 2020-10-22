@@ -38,6 +38,8 @@ image/svg+xml-compressed=org.gnome.eog.desktop
 image/vnd.wap.wbmp=org.gnome.eog.desktop
 image/x-icns=org.gnome.eog.desktop
 application/pdf=org.gnome.Evince.desktop
+text/html=figma-linux.desktop
+x-scheme-handler/figma=figma-linux.desktop
 
 [Added Associations]
 audio/vorbis=rhythmbox.desktop;
