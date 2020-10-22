@@ -41,6 +41,7 @@ application/pdf=org.gnome.Evince.desktop
 text/html=figma-linux.desktop
 x-scheme-handler/figma=figma-linux.desktop
 application/wps-office.docx=wps-office-wps.desktop
+text/plain=nvim.desktop
 application/wps-office.pptx=wps-office-wpp.desktop
 application/wps-office.xlsx=wps-office-et.desktop
 
@@ -129,5 +130,7 @@ x-scheme-handler/sms=org.gnome.Shell.Extensions.GSConnect.desktop;
 x-scheme-handler/tel=org.gnome.Shell.Extensions.GSConnect.desktop;
 application/x-desktop=dex.desktop;
 application/wps-office.docx=libreoffice-writer.desktop;wps-office-wps.desktop;
+application/json=nvim.desktop;
+text/plain=nvim.desktop;
 application/wps-office.pptx=libreoffice-impress.desktop;wps-office-wpp.desktop;
 application/wps-office.xlsx=libreoffice-calc.desktop;wps-office-et.desktop;
