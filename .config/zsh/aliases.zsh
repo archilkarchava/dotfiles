@@ -1,5 +1,6 @@
 # Manage dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cfg='config'
 
 alias ls='exa --color=always --icons'
 alias ll='ls -l'
