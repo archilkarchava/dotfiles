@@ -41,6 +41,7 @@ application/pdf=org.gnome.Evince.desktop
 text/html=figma-linux.desktop
 x-scheme-handler/figma=figma-linux.desktop
 application/wps-office.docx=wps-office-wps.desktop
+application/json=nvim.desktop
 text/plain=nvim.desktop
 application/wps-office.pptx=wps-office-wpp.desktop
 application/wps-office.xlsx=wps-office-et.desktop
