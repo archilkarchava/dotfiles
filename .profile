@@ -9,6 +9,7 @@ PATH="${PATH}:${HOME}/.yarn/bin"
 export QT_QPA_PLATFORMTHEME='gnome'
 export EDITOR='nvim'
 export VISUAL='nvim'
+export LESS='-R'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
