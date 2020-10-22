@@ -30,6 +30,7 @@ alias spotify="${HOME}/scripts/gtk-enforce-theme-variant -qt dark 'LD_PRELOAD=/u
 
 alias lzd='lazydocker'
 
+alias vicfg="$EDITOR $HOME/.config/nvim/init.vim"
 alias vizrc="$EDITOR $ZDOTDIR/.zshrc"
 alias vizp="$EDITOR $ZDOTDIR/.zprofile"
 alias vip="$EDITOR $HOME/.profile"
