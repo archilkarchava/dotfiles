@@ -1,0 +1,16 @@
+#!/bin/bash
+
+theme_file="$1"
+
+if [[ -z "${theme_file}" ]]; then
+  if [[ "$(gsettings get org.gnome.desktop.interface gtk-theme)" == *dark* ]]; then
+    theme_file="${HOME}/.config/copyq/themes/my-dark.ini"
+  else
+    theme_file="${HOME}/.config/copyq/themes/my-light.ini"
+  fi
+fi
+
+echo "$theme_file"
+
+pgrep -x copyq > /dev/null 2>&1 && pkill -x copyq
+copyq & sleep 0.5 && copyq loadTheme "${theme_file}"
