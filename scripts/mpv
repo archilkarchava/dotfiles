@@ -1,0 +1,10 @@
+#!/bin/bash
+
+mpv_exec='/usr/bin/mpv'
+
+if [[ "$*" == *--intel-gpu* ]]; then
+  "${mpv_exec}" "${@/--intel-gpu}"
+  exit
+fi
+
+/usr/bin/prime-run "${mpv_exec}" "$@"
