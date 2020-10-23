@@ -10,7 +10,7 @@ if [[ -z "${theme_file}" ]]; then
   fi
 fi
 
-echo "$theme_file"
+echo "${theme_file}"
 
 pgrep -x copyq > /dev/null 2>&1 && pkill -x copyq
 copyq & sleep 0.5 && copyq loadTheme "${theme_file}"
