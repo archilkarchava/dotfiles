@@ -2,9 +2,20 @@
 
 mpv_exec='/usr/bin/mpv'
 
-if [[ "$*" == *--intel-gpu* ]]; then
-  "${mpv_exec}" "${@/--intel-gpu}"
+mpv_args=()
+
+for arg in "$@"; do
+    if [ "${arg}" == '--nvidia' ]; then
+      NVIDIA=1
+      continue
+    fi
+    mpv_args+=("${arg}")
+done
+
+if [[ ${NVIDIA} -eq 1 ]]; then
+  /usr/bin/prime-run "${mpv_exec}" "${mpv_args[@]}"
   exit
 fi
 
-/usr/bin/prime-run "${mpv_exec}" "$@"
+"${mpv_exec}" "${mpv_args[@]}"
+
