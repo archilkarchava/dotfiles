@@ -8,14 +8,16 @@ unsetopt flow_control
 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-autoload -U select-word-style
+autoload -Uz select-word-style
 select-word-style normal
 
 zstyle ':zle:transpose-words' word-style whitespace
 
-autoload -U run-help
-autoload run-help-sudo run-help-git
-autoload -U run-tldr
+autoload -Uz run-help
+unalias run-help
+autoload -Uz run-help-git run-help-ip run-help-openssl run-help-p4 run-help-sudo run-help-svk run-help-svn
+
+autoload -Uz run-tldr
 
 zle -N run-tldr
 
@@ -136,19 +138,19 @@ zinit wait lucid light-mode for \
       zsh-users/zsh-completions
 
 # Change terminal tab title based on pwd
-autoload -U set-win-title
+autoload -Uz set-win-title
 precmd_functions+=(set-win-title)
 
 # Copy current command line buffer via ctrl+x
-autoload -U clcopy
+autoload -Uz clcopy
 zle -N clcopy
 bindkey '^X' clcopy
 
 # Fix corrupt history file
-autoload -U fix-history
+autoload -Uz fix-history
 
 # List current token
-autoload -U list-current-token
+autoload -Uz list-current-token
 zle -N list-current-token
 bindkey '^[l' list-current-token
 

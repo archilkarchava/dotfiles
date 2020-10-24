@@ -1,3 +1,5 @@
+alias help=run-help
+
 # Manage dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cfg='config'
