@@ -9,6 +9,7 @@ PATH="${PATH}:${HOME}/.yarn/bin"
 export QT_QPA_PLATFORMTHEME='gnome'
 export EDITOR='nvim'
 export VISUAL='nvim'
+export PAGER='less'
 export LESS='-R'
 # Disable less history
 export LESSHISTFILE=-
