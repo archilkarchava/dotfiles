@@ -10,6 +10,8 @@ export QT_QPA_PLATFORMTHEME='gnome'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export LESS='-R'
+# Disable less history
+export LESSHISTFILE=-
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
