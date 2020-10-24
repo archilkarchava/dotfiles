@@ -136,16 +136,21 @@ zinit wait lucid light-mode for \
       zsh-users/zsh-completions
 
 # Change terminal tab title based on pwd
-autoload -Uz set-win-title
+autoload -U set-win-title
 precmd_functions+=(set-win-title)
 
 # Copy current command line buffer via ctrl+x
-autoload -Uz clcopy
+autoload -U clcopy
 zle -N clcopy
 bindkey '^X' clcopy
 
 # Fix corrupt history file
 autoload -U fix-history
+
+# List current token
+autoload -U list-current-token
+zle -N list-current-token
+bindkey '^[l' list-current-token
 
 source "${ZDOTDIR}/aliases.zsh"
 

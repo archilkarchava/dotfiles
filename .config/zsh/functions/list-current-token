@@ -1,0 +1,30 @@
+#!/bin/zsh
+
+# List contents of token under the cursor if it is a directory, otherwise list the contents of the current directory
+
+function list-current-token() {
+  emulate -L zsh
+  setopt sh_word_split
+  set -- ${LBUFFER}
+
+  eval local val="${@: -1}"
+  printf "\n"
+  if [[ -d "${val}" ]]; then
+    exa -a "${val}"
+  else
+    local dir="$(dirname -- "${val}")"
+    if [[ "${dir}" != '.' ]] && [[ -d "${dir}" ]]; then
+      exa -a "${dir}"
+    else
+      exa -a
+    fi
+  fi
+
+  local line_count="$(( $(echo -n "${PROMPT}" | grep -c '^') - 1 ))"
+  if [[ "${line_count}" -gt 1 ]]; then
+    for (( i=1; i<=line_count; i++ )); do
+      printf "\n"
+    done
+  fi
+  zle reset-prompt
+}
