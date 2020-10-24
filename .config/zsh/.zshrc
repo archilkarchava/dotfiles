@@ -1,8 +1,3 @@
-# History settings
-[[ -z "${HISTFILE}" ]] && HISTFILE="${ZDOTDIR}/.zsh_history"
-HISTSIZE=290000
-SAVEHIST="${HISTSIZE}"
-
 fpath=( "${ZDOTDIR}/functions" "${ZDOTDIR}/completions" '/usr/share/zsh/vendor-completions' "${fpath[@]}" )
 
 bindkey -e
@@ -108,7 +103,16 @@ zinit wait lucid if'[[ "$DISPLAY" != "" ]]' has'xdotool' has'wmctrl' atload"
 
 zinit wait lucid has'git' for wfxr/forgit
 
+# History settings
+[[ -z "${HISTFILE}" ]] && HISTFILE="${ZDOTDIR}/.zsh_history"
+HISTSIZE=290000
+SAVEHIST="${HISTSIZE}"
+
 zinit wait lucid for OMZ::lib/history.zsh
+# Appends every command to the history file once it is executed
+setopt inc_append_history
+# Reloads the history whenever you use it
+setopt share_history
 
 zinit wait lucid for OMZP::command-not-found
 zinit wait lucid has'systemctl' for OMZP::systemd
