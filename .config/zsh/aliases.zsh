@@ -37,6 +37,9 @@ alias vial="${EDITOR} ${HOME}/.config/alacritty/alacritty.yml"
 
 alias vitm="${EDITOR} ${HOME}/.tmux.conf"
 
+alias vimpv="${EDITOR} ${HOME}/.config/mpv/mpv.conf"
+alias vimpvinp="${EDITOR} ${HOME}/.config/mpv/input.conf"
+
 alias vizrc="${EDITOR} ${ZDOTDIR}/.zshrc"
 alias vizp="${EDITOR} ${ZDOTDIR}/.zprofile"
 alias vip="${EDITOR} ${HOME}/.profile"
