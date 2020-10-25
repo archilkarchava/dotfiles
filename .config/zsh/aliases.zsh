@@ -35,6 +35,8 @@ alias vicfg="${EDITOR} ${HOME}/.config/nvim/init.vim"
 
 alias vial="${EDITOR} ${HOME}/.config/alacritty/alacritty.yml"
 
+alias vitm="${EDITOR} ${HOME}/.tmux.conf"
+
 alias vizrc="${EDITOR} ${ZDOTDIR}/.zshrc"
 alias vizp="${EDITOR} ${ZDOTDIR}/.zprofile"
 alias vip="${EDITOR} ${HOME}/.profile"
