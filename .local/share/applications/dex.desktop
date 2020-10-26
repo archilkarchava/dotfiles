@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Icon=application-x-executable
+NoDisplay=true
+Exec=/usr/bin/dex %u
+Name=Dex
+Comment=Open desktop file
