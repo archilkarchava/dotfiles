@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+   <mime-type type="application/x-vscode-workspace">
+     <comment>Visual Studio Code Workspace</comment>
+     <sub-class-of type="application/javascript"/>
+     <generic-icon name="text-x-script"/>
+     <glob pattern="*.code-workspace"/>
+   </mime-type>
+</mime-info>

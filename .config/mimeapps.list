@@ -45,6 +45,7 @@ application/json=nvim.desktop
 text/plain=nvim.desktop
 application/wps-office.pptx=wps-office-wpp.desktop
 application/wps-office.xlsx=wps-office-et.desktop
+application/x-vscode-workspace=visual-studio-code.desktop
 
 [Added Associations]
 audio/vorbis=rhythmbox.desktop;
@@ -132,8 +133,9 @@ x-scheme-handler/tel=org.gnome.Shell.Extensions.GSConnect.desktop;
 application/x-desktop=dex.desktop;
 application/wps-office.docx=libreoffice-writer.desktop;wps-office-wps.desktop;
 application/json=org.gnome.gedit.desktop;nvim.desktop;
-text/plain=nvim.desktop;
+text/plain=nvim.desktop;visual-studio-code.desktop;
 application/wps-office.pptx=libreoffice-impress.desktop;wps-office-wpp.desktop;
 application/wps-office.xlsx=libreoffice-calc.desktop;wps-office-et.desktop;
 application/x-shellscript=nvim.desktop;
 image/x-xcf=gimp.desktop;
+application/x-vscode-workspace=nvim.desktop;visual-studio-code.desktop;
