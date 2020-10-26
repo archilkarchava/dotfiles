@@ -117,7 +117,12 @@ setopt inc_append_history
 setopt share_history
 
 zinit wait lucid for OMZP::command-not-found
-zinit wait lucid has'systemctl' for OMZP::systemd
+zinit wait lucid has'systemctl' atload"
+  alias sc-poweroff='systemctl poweroff'
+  alias sc-reboot='systemctl reboot'
+  alias sc-suspend='systemctl suspend'
+  alias sc-hibernate='systemctl hibernate'
+" for OMZP::systemd
 zinit wait lucid has'yarn' for OMZP::yarn
 
 zinit wait lucid atload"
