@@ -6,7 +6,7 @@ KEYTIMEOUT=1
 # For ctrl-q to work
 unsetopt flow_control
 
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
 autoload -Uz select-word-style
 select-word-style normal
