@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hibernate
+Comment=Hibernate system
+Keywords=
+Exec=/usr/bin/systemctl hibernate
+TryExec=systemctl
+Terminal=false
+Icon=system-hibernate
+Type=Application
+Categories=System
