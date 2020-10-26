@@ -122,6 +122,7 @@ zinit wait lucid has'systemctl' atload"
   alias sc-reboot='systemctl reboot'
   alias sc-suspend='systemctl suspend'
   alias sc-hibernate='systemctl hibernate'
+  alias sc-suspend-then-hibernate='systemctl suspend-then-hibernate'
 " for OMZP::systemd
 zinit wait lucid has'yarn' for OMZP::yarn
 
