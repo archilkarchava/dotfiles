@@ -4,6 +4,8 @@ alias help=run-help
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cfg='config'
 
+alias sudo='nocorrect sudo '
+
 alias ls='exa --color=always'
 alias ll='ls -l'
 alias la='ls -a'
