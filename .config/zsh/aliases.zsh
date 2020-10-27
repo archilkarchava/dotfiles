@@ -37,6 +37,8 @@ alias vicfg="${EDITOR} ${HOME}/.config/nvim/init.vim"
 
 alias vial="${EDITOR} ${HOME}/.config/alacritty/alacritty.yml"
 
+alias vigest="${EDITOR} ${HOME}/.config/fusuma/config.yml"
+
 alias vitm="${EDITOR} ${HOME}/.tmux.conf"
 
 alias vimpv="${EDITOR} ${HOME}/.config/mpv/mpv.conf"
