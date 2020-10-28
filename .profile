@@ -26,7 +26,7 @@ export FZF_DEFAULT_OPTS='--ansi'
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_CTRL_T_OPTS="--height 70% --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {} 2> /dev/null || exa -1 --color=always {}'"
 export FZF_ALT_C_COMMAND="fd --no-ignore -E '.git' -E '.cache' -E '.rustup' -E '.cargo' -E 'coc' --hidden --follow -t d . ${HOME}"
-export FZF_ALT_C_OPTS="--prompt 'cd: ' --preview 'exa -1 --color=always {}'"
+export FZF_ALT_C_OPTS="--prompt 'cd ' --preview 'exa -1 --color=always {}'"
 
 
 export FZF_COMPLETION_OPTS="${FZF_CTRL_T_OPTS}"
