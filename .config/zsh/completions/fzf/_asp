@@ -5,7 +5,7 @@ _fzf_complete_asp() {
   lbuf="$1"
   preview='pacman -Si {1}'
   get_matches='pacman -Slq'
-  _fzf_complete --height="${FZF_TMUX_HEIGHT:=75%}" --multi --ansi \
+  _fzf_complete --height="${FZF_TMUX_HEIGHT:=75%}" --ansi \
     --bind='Ctrl-X:toggle-preview' \
     --no-hscroll --inline-info \
     --header='Ctrl-X to toggle package info' \
