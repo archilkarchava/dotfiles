@@ -1,0 +1,1 @@
+/home/archil/.config/zsh/.zshrc
