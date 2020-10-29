@@ -33,16 +33,16 @@ alias spotify='gtk-launch spotify'
 
 alias lzd='lazydocker'
 
-alias vicfg="${EDITOR} ${HOME}/.config/nvim/init.vim"
+alias vicfg="${EDITOR} ${XDG_CONFIG_HOME}/nvim/init.vim"
 
-alias vial="${EDITOR} ${HOME}/.config/alacritty/alacritty.yml"
+alias vial="${EDITOR} ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
 
-alias vigest="${EDITOR} ${HOME}/.config/fusuma/config.yml"
+alias vigest="${EDITOR} ${XDG_CONFIG_HOME}/fusuma/config.yml"
 
-alias vitm="${EDITOR} ${HOME}/.tmux.conf"
+alias vitm="${EDITOR} ${XDG_CONFIG_HOME}/tmux/tmux.conf"
 
-alias vimpv="${EDITOR} ${HOME}/.config/mpv/mpv.conf"
-alias vimpvinp="${EDITOR} ${HOME}/.config/mpv/input.conf"
+alias vimpv="${EDITOR} ${XDG_CONFIG_HOME}/mpv/mpv.conf"
+alias vimpvinp="${EDITOR} ${XDG_CONFIG_HOME}/mpv/input.conf"
 
 alias vizrc="${EDITOR} ${ZDOTDIR}/.zshrc"
 alias vizp="${EDITOR} ${ZDOTDIR}/.zprofile"
