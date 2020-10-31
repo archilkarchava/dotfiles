@@ -14,7 +14,7 @@ select-word-style normal
 zstyle ':zle:transpose-words' word-style whitespace
 
 autoload -Uz run-help
-unalias run-help
+(( ${+aliases[run-help]} )) && unalias run-help
 autoload -Uz run-help-git run-help-ip run-help-openssl run-help-p4 run-help-sudo run-help-svk run-help-svn
 
 autoload -Uz run-tldr
