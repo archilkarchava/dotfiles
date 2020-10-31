@@ -1,13 +1,15 @@
 #!/bin/zsh
 
 _fzf_complete_yay() {
-  local lbuf preview get_matches
+  local lbuf preview get_matches flags
   lbuf="$1"
-  preview='yay -Si {1}'
-  get_matches='yay -Slq'
+  flags='--pacman /usr/bin/pacman'
+  yay_exec="yay ${flags}"
+  preview="${yay_exec} -Si {1}"
+  get_matches="${yay_exec} -Slq"
   if [[ "${lbuf}" == *-R* ]] || [[ "${lbuf}" == *--remove* ]]; then
-    preview='yay -Qi {1}'
-    get_matches='yay -Qq'
+    preview="${yay_exec} -Qi {1}"
+    get_matches="${yay_exec} -Qq"
   fi
   _fzf_complete --height="${FZF_TMUX_HEIGHT:=75%}" --multi --ansi \
     --bind='Ctrl-X:toggle-preview' \
