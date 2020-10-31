@@ -93,6 +93,7 @@ realpath=\${(Qe)~realpath}
 
 # give a preview of directory when completing cd
 zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:*' fzf-bindings 'ctrl-a:select-all' 'ctrl-alt-a:deselect-all'
 
 zinit wait lucid if'[[ "$DISPLAY" != "" ]]' has'xdotool' has'wmctrl' atload"
   zstyle ':notify:*' command-complete-timeout 20;
