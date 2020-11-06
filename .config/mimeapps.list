@@ -46,6 +46,7 @@ text/plain=nvim.desktop
 application/wps-office.pptx=wps-office-wpp.desktop
 application/wps-office.xlsx=wps-office-et.desktop
 application/x-vscode-workspace=visual-studio-code.desktop
+application/vnd.openxmlformats-officedocument.presentationml.presentation=wps-office-wpp.desktop
 
 [Added Associations]
 audio/vorbis=org.gnome.Lollypop.desktop;
@@ -141,3 +142,5 @@ image/x-xcf=gimp.desktop;
 application/x-vscode-workspace=nvim.desktop;visual-studio-code.desktop;
 application/illustrator=org.inkscape.Inkscape.desktop;
 application/epub+zip=calibre-gui.desktop;
+application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop;wps-office-wpp.desktop;
+text/markdown=visual-studio-code.desktop;
