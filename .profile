@@ -4,6 +4,12 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:="${HOME}/.config"}"
 export CUDA_CACHE_PATH="${XDG_CACHE_HOME}/nv"
 export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
 
+export ANDROID_HOME="${HOME}/Android/Sdk"
+export PATH="${PATH}:${ANDROID_HOME}/emulator"
+export PATH="${PATH}:${ANDROID_HOME}/tools"
+export PATH="${PATH}:${ANDROID_HOME}/tools/bin"
+export PATH="${PATH}:${ANDROID_HOME}/platform-tools"
+
 PATH="${HOME}/scripts:${PATH}"
 PATH="${PATH}:${HOME}/.local/bin"
 PATH="${PATH}:${HOME}/.cargo/bin"
