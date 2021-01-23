@@ -28,6 +28,7 @@ endif
 " Plug 'joshdick/onedark.vim', Cond(!exists('g:vscode'))
 " Plug 'taniarascia/new-moon.vim', Cond(!exists('g:vscode'))
 Plug 'tomasiser/vim-code-dark', Cond(!exists('g:vscode'))
+Plug 'cormacrelf/vim-colors-github', Cond(!exists('g:vscode'))
 " Plug 'kaicataldo/material.vim', Cond(!exists('g:vscode'))
 " -------------------------------------------------------------------------------------------------
 " Plug 'justinmk/vim-sneak'
@@ -134,6 +135,7 @@ if !exists('g:vscode')
 	endif
   " let g:material_terminal_italics = 1
   " let g:material_theme_style = 'ocean'
+  " let g:github_colors_soft = 1
 	colorscheme codedark
   " highlight Normal ctermbg=NONE guibg=NONE
   " highlight LineNr ctermbg=NONE guibg=NONE
