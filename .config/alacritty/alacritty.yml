@@ -118,29 +118,30 @@ shell:
   program: tmux
 
 mouse_bindings:
-  - { mouse: Middle,                          action: Paste                                                                                                   }
+  - { mouse: Middle,                                action: Paste                                                                                                   }
 key_bindings:
-  - { key: N,         mods: Control,          action: SpawnNewInstance                                                                                        }
-  - { key: V,         mods: Control,          action: Paste                                                                                                   }
-  - { key: Return,    mods: Control,          action: ToggleFullscreen                                                                                        }
-  - { key: F11,                               action: ToggleFullscreen                                                                                        }
-  - { key: Insert,    mods: Shift,            action: PasteSelection                                                                                          }
-  - { key: Add,       mods: Control,          action: IncreaseFontSize                                                                                        }
-  - { key: Subtract,  mods: Control,          action: DecreaseFontSize                                                                                        }
-  - { key: Tab,       mods: Control|Shift,    command: { program: "tmux", args: ["previous-window"] }                                                         }
-  - { key: Tab,       mods: Control,          command: { program: "tmux", args: ["next-window"] }                                                             }
-  - { key: T,         mods: Control|Shift,    command: { program: "tmux", args: ["new-window"] }                                                              }
-  - { key: W,         mods: Control|Shift,    command: { program: "tmux", args: ["kill-pane"] }                                                               }
-  - { key: R,         mods: Control|Alt,      command: { program: "tmux", args: ["split-window", "-h"] }                                                      }
-  - { key: D,         mods: Control|Alt,      command: { program: "tmux", args: ["split-window", "-v"] }                                                      }
-  - { key: F,         mods: Control|Shift,    command: { program: "tmux", args: ["copy-mode", ";", "command-prompt", "-i", "-p", "(search up)", "send -X search-backward-incremental '%%%'"] } }
+  - { key: N,               mods: Control,          action: SpawnNewInstance                                                                                        }
+  - { key: V,               mods: Control,          action: Paste                                                                                                   }
+  - { key: Return,          mods: Control,          action: ToggleFullscreen                                                                                        }
+  - { key: F11,                                     action: ToggleFullscreen                                                                                        }
+  - { key: Insert,          mods: Shift,            action: PasteSelection                                                                                          }
+  - { key: NumpadAdd,       mods: Control,          action: IncreaseFontSize                                                                                        }
+  - { key: NumpadSubtract,  mods: Control,          action: DecreaseFontSize                                                                                        }
+  - { key: NumpadAdd,       mods: Control|Shift,    action: ResetFontSize                                                                                           }
+  - { key: Tab,             mods: Control|Shift,    command: { program: "tmux", args: ["previous-window"] }                                                         }
+  - { key: Tab,             mods: Control,          command: { program: "tmux", args: ["next-window"] }                                                             }
+  - { key: T,               mods: Control|Shift,    command: { program: "tmux", args: ["new-window"] }                                                              }
+  - { key: W,               mods: Control|Shift,    command: { program: "tmux", args: ["kill-pane"] }                                                               }
+  - { key: R,               mods: Control|Alt,      command: { program: "tmux", args: ["split-window", "-h"] }                                                      }
+  - { key: D,               mods: Control|Alt,      command: { program: "tmux", args: ["split-window", "-v"] }                                                      }
+  - { key: F,               mods: Control|Shift,    command: { program: "tmux", args: ["copy-mode", ";", "command-prompt", "-i", "-p", "(search up)", "send -X search-backward-incremental '%%%'"] } }
   # Swap tmux tabs with Ctrl+Shift+hl
-  - { key: H,         mods: Control|Shift,        command: { program: "tmux", args: ["swap-window", "-t", "-1", ";", "select-window", "-t", "-1"] }           }
-  - { key: L,         mods: Control|Shift,        command: { program: "tmux", args: ["swap-window", "-t", "+1", ";", "select-window", "-t", "+1"] }           }
+  - { key: H,               mods: Control|Shift,    command: { program: "tmux", args: ["swap-window", "-t", "-1", ";", "select-window", "-t", "-1"] }               }
+  - { key: L,               mods: Control|Shift,    command: { program: "tmux", args: ["swap-window", "-t", "+1", ";", "select-window", "-t", "+1"] }               }
 
 
   # Resize tmux panes with Alt+Shift+hjkl
-  - { key: H,         mods: Alt|Shift,        command: { program: "tmux", args: ["resize-pane", "-L"]}                                                        }
-  - { key: J,         mods: Alt|Shift,        command: { program: "tmux", args: ["resize-pane", "-D"]}                                                        }
-  - { key: K,         mods: Alt|Shift,        command: { program: "tmux", args: ["resize-pane", "-U"]}                                                        }
-  - { key: L,         mods: Alt|Shift,        command: { program: "tmux", args: ["resize-pane", "-R"]}                                                        }
+  - { key: H,               mods: Alt|Shift,        command: { program: "tmux", args: ["resize-pane", "-L"]}                                                        }
+  - { key: J,               mods: Alt|Shift,        command: { program: "tmux", args: ["resize-pane", "-D"]}                                                        }
+  - { key: K,               mods: Alt|Shift,        command: { program: "tmux", args: ["resize-pane", "-U"]}                                                        }
+  - { key: L,               mods: Alt|Shift,        command: { program: "tmux", args: ["resize-pane", "-R"]}                                                        }
