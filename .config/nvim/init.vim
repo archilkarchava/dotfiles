@@ -249,4 +249,5 @@ if !exists('g:vscode')
 	autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 	autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 	" == AUTOCMD END ================================
+  nnoremap <Leader>z :call mkdir(expand("%:p:h"), "p")<CR>
 endif
